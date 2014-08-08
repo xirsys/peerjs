@@ -1,1 +1,64 @@
-<h3>Welcome</h3>
+<div class="container-fluid">
+
+  <!-- Stack the columns on mobile by making one full-width and the other half-width -->
+  <div class="row">
+
+    <!-- Empty column 1 -->
+    <div class="col-md-1"></div>
+
+    <!-- Participants -->
+    <div class="col-md-2 col-left">
+      <ul class="participants" id="otherClients">
+        <!-- <li class="participant">&nbsp;&nbsp;&nbsp;James Woods<text class="pull-right participant-button"><a><i class="fa fa-plus-circle fa-2x" style="vertical-align: middle;"></i></a></text></li> -->
+      </ul>
+    </div>
+        
+    <!-- Chat -->
+    <div class="col-md-8 col-right">
+
+      <!-- Chat video -->
+      <div class="row chat-video-others" id="videos">
+        <div>
+          <video autoplay="autoplay" id="callerVideo"></video>
+        </div>
+      <!-- Each caller video needs to be in its own div so its close button can be positioned correctly -->
+      </div>
+          
+      <!-- Chat video -->
+      <div class="row chat-video-self">
+        <video autoplay="autoplay" class="easyrtcMirror" id="selfVideo" muted="muted" volume="0" ></video>
+      <!-- Each caller video needs to be in its own div so its close button can be positioned correctly -->
+      </div>
+
+      <!-- Chat text -->
+      <div class="row chat-text">
+                
+        <div id="connectControls">
+          <div id="iam">Not yet connected...</div>
+        </div>
+            
+      </div>
+          
+      <!-- Chat input -->
+      <div class="row chat-input">
+        <input class="chat-input" type="text" name="chat-input">&nbsp;&nbsp;&nbsp;<span class="chat-input-icon"><i class="fa fa-comment fa-lg"></i></span>
+      </div>
+
+    </div>
+
+    <!-- Empty column 2 -->
+    <div class="col-md-1"></div>
+
+  </div>
+
+</div> <!-- /container -->
+
+<script>
+  easyrtc.setUsername(getURLParameter('username'));
+      
+  function getURLParameter(name) {
+    return decodeURI(
+      (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+  }
+</script>
