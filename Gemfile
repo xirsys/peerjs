@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 gem 'high_voltage'
 gem 'therubyracer', :platform=>:ruby
 gem 'thin'
+gem 'font-awesome-rails', '~> 4.1.0.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]
