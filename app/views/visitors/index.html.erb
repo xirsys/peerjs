@@ -3,7 +3,11 @@
     // Compatibility shim
     navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
 
-    // Call XirSys servers
+    // This object will take in an array of XirSys STUN / TURN servers
+    // and override the original config object
+    var peerConnectionConfig;
+  
+    // Call XirSys ICE servers
     $.ajax({
       type: "POST",
       dataType: "json",
@@ -13,7 +17,7 @@
         secret: "< Your secret API token >",
         domain: "< www.yourdomain.com >",
         application: "default",
-        room: room,
+        room: "default",
         secure: 1
       },
       success: function (data, status) {
@@ -26,9 +30,9 @@
   
     // PeerJS object
     var peer = new Peer({
-      key: 'lwjd5qra8257b9',
+      key: '< Your PeerServer cloud API key >',
       debug: 3,
-      peerConnectionConfig
+      config: peerConnectionConfig
     });
 
     peer.on('open', function(){
@@ -108,7 +112,7 @@
 
   </script>
 
-  <div class="pure-g">
+<div class="pure-g">
 
       <!-- Video area -->
       <div class="pure-u-2-3" id="video-container">
