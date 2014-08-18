@@ -4,7 +4,7 @@
 
   // This object will take in an array of XirSys STUN / TURN servers
   // and override the original config object
-  var peerConnectionConfig;
+  var customConfig;
   
   // Call XirSys ICE servers
   $.ajax({
@@ -21,8 +21,8 @@
     },
     success: function (data, status) {
       // data.d is where the iceServers object lives
-      peerConnectionConfig = data.d;
-      console.log(peerConnectionConfig);
+      customConfig = data.d;
+      console.log(customConfig);
     },
     async: false
   });
@@ -31,7 +31,7 @@
   var peer = new Peer({
     key: '< Your PeerServer cloud API key >',
     debug: 3,
-    config: peerConnectionConfig
+    config: customConfig
   });
 
   peer.on('open', function(){
